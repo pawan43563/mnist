@@ -38,6 +38,62 @@
       </div>
       {{ numbering|increment }}
       {% endif %}
+      {% if numbering|index:forloop.counter0 == 1.32 %}
+      <div class="row">
+      <div class="col-sm-1">{{ numbering|index:forloop.counter0 }}</div>
+      <div class="col-sm-11 align-self-center"><p>Affiliation Board of School:</p></div>
+      </div>
+      {{ numbering|increment }}
+      {% endif %}
+      {% if numbering|index:forloop.counter0 == 1.33 %}
+      <div class="row">
+      <div class="col-sm-1">{{ numbering|index:forloop.counter0 }}</div>
+      <div class="col-sm-11 align-self-center"><p>Distance of the school(in km.) from the nearest Govt./Aided school:</p></div>
+      </div>
+      {{ numbering|increment }}
+      {% endif %}
+      {% if numbering|index:forloop.counter0 == 1.36 %}
+      <div class="row">
+      <div class="col-sm-1">{{ numbering|index:forloop.counter0 }}</div>
+      <div class="col-sm-11 align-self-center"><p>Whether Anganwadi Centre is located inside school premises(For Govt. and Aided Schools)?</p></div>
+      </div>
+      {{ numbering|increment }}
+      {% endif %}
+      {% if numbering|index:forloop.counter0 == 1.37 %}
+      <div class="row">
+      <div class="col-sm-1">{{ numbering|index:forloop.counter0 }}</div>
+      <div class="col-sm-11 align-self-center"><p>Number of instructional days(previous academic year):</p></div>
+      </div>
+      {{ numbering|increment }}
+      {% endif %}
+      {% if numbering|index:forloop.counter0 == 1.38 %}
+      <div class="row">
+      <div class="col-sm-1">{{ numbering|index:forloop.counter0 }}</div>
+      <div class="col-sm-11 align-self-center"><p>Average school hours for children(per day)-Number of hours children stay in school e.g. for five hours and forty minutes write 5:40:</p></div>
+      </div>
+      {{ numbering|increment }}
+      {% endif %}
+      {% if numbering|index:forloop.counter0 == 1.39 %}
+      <div class="row">
+      <div class="col-sm-1">{{ numbering|index:forloop.counter0 }}</div>
+      <div class="col-sm-11 align-self-center"><p>Average school hours for Teachers(per day)-Number of hours teacher stay in school e.g. for five hours and forty minutes write 5:40:</p></div>
+      </div>
+      {{ numbering|increment }}
+      {% endif %}
+      {% if numbering|index:forloop.counter0 == 1.41 %}
+      <div class="row">
+      <div class="col-sm-1">{{ numbering|index:forloop.counter0 }}</div>
+      <div class="col-sm-11 align-self-center"><p>Is CCE being implemented in school?</p></div>
+      </div>
+      {{ numbering|increment }}
+      {% endif %}
+      {% if numbering|index:forloop.counter0 == 9999 %}
+      <div class="row">
+      <div class="col-sm-1"></div>
+      <div class="col-sm-11 align-self-center"><p>if yes,</p></div>
+      </div>
+      {{ numbering|increment }}
+      {% endif %}
       <div class="form-group row mb-3">
           <div class="col-sm-1 align-self-center">{{ numbering|index:forloop.counter0 }}</div>
           {% if field.label != '' %}
