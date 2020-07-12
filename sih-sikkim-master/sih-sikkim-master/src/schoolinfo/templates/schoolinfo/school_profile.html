@@ -94,6 +94,45 @@
       </div>
       {{ numbering|increment }}
       {% endif %}
+      {% if numbering|index:forloop.counter0 == 1.42 %}
+      <div class="row">
+      <div class="col-sm-1">1.42</div>
+      <div class="col-sm-11 align-self-center"><p>For Private Unaided and Aided Schools</p></div>
+      </div>
+      {{ numbering|increment }}
+      {% endif %}
+      {% if numbering|index:forloop.counter0 == 99999 %}
+      <div class="row">
+      <div class="col-sm-1"></div>
+      <div class="col-sm-11 align-self-center"><p>If yes, details of Special training</p></div>
+      </div>
+      {{ numbering|increment }}
+      {% endif %}
+      {% if numbering|index:forloop.counter0 == 1.49 %}
+      <div class="row">
+      <div class="col-sm-1">1.49</div>
+      <div class="col-sm-11 align-self-center"><p>
+        Details of visits to the school during the previous academic year:</p></div>
+      </div>
+      {{ numbering|increment }}
+      {% endif %}
+      {% if numbering|index:forloop.counter0 == 999999 %}
+      <div class="row">
+      <div class="col-sm-1"></div>
+      <div class="col-sm-11 align-self-center"><p>
+        If Yes,</p></div>
+      </div>
+      {{ numbering|increment }}
+      {% endif %}
+      {% if numbering|index:forloop.counter0 == 88888 %}
+      <div class="row">
+      <div class="col-sm-1"></div>
+      <div class="col-sm-11 align-self-center"><p>
+        If No,</p></div>
+      </div>
+      {{ numbering|increment }}
+      {% endif %}
+      
       <div class="form-group row mb-3">
           <div class="col-sm-1 align-self-center">{{ numbering|index:forloop.counter0 }}</div>
           {% if field.label != '' %}

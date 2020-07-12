@@ -77,6 +77,13 @@ affi_board_school=(('CBSE',('CBSE')),('State Board',('State Board')),('ICSE',('I
 ('International Board',('International Board')),('Others',('Others')),
     ('Both CBSE & State Board',('Both CBSE & State Board')))
 
+who_conducts=(('School teachers',('School teachers')),('specially engaged teachers',('specially engaged teachers')),('both 1&2',('both 1&2')),
+('NGO',('NGO')),('Others',('Others')))
+
+where_conducted=(('School premises',('School premises')),('other school premises',('other school premises')),('both 1&2',('both 1&2')))
+
+training_type=(('Residential',('Residential')),('non-residential',('non-residential')),('both',('both')))
+
 class SchoolProfile(TimeStampMixin):
     sp_school = models.OneToOneField(School, on_delete=models.CASCADE)
     sp_school_name = models.CharField(max_length=250, verbose_name='School Name (In Capital Letters)')
@@ -183,13 +190,65 @@ class SchoolProfile(TimeStampMixin):
     sp_cce_higher_sec=models.CharField(max_length=8,blank=True,choices=yn,verbose_name='(d) Higher Secondary')
     sp_rec_maintained=models.CharField(max_length=8,blank=True,choices=yn,verbose_name='(a) Are cumulative records of pupil being maintained?')
     sp_rec_shared=models.CharField(max_length=8,blank=True,choices=yn,verbose_name='(b) Are cumulative records of pupil being shared with parents?')
-    
+    sp_children_rte_current=models.CharField(max_length=9,blank=True,verbose_name='(a)No. of children enrolled at entry level under Section 12 of the RTE Act in current academic year:')
+    sp_children_rte_prev=models.CharField(max_length=9,blank=True,verbose_name='(b)No. of children enrolled at entry level under Section 12 of the RTE Act in current previous years:')
+
     #1.42(a)
 
     #1.42(b)
 
+    sp_special_training=models.CharField(max_length=20,blank=True,choices=yn,verbose_name='Whether an out of School Shildren enrolled in the school are attending Special Training?')
+    sp_special_training_current=models.CharField(max_length=10,blank=True,verbose_name='(a) No. of children enrolled for Special Training in current year:')
+    sp_special_training_previous=models.CharField(max_length=10,blank=True,verbose_name='(b) No. of children enrolled for Special Training in previous academic year:')
+    sp_special_training_com_previous=models.CharField(max_length=10,blank=True,verbose_name='(c) No. of children completed Special Training in previous academic year:')
+    sp_who_conducts_training=models.CharField(max_length=200,blank=True,choices=who_conducts,verbose_name='(d) Who conducts Special Training?')
+    sp_where_conducted_training=models.CharField(max_length=200,blank=True,choices=where_conducted,verbose_name='(e) Where is Special Training conducted?')
+    sp_training_type=models.CharField(max_length=200,blank=True,choices=training_type,verbose_name='(f) Type of Training being conducted?')
+    
+    sp_remedial_teaching=models.CharField(max_length=50,blank=True,verbose_name='No. of Students attending Remedial Teaching in current year:')
+    sp_academic_start=models.CharField(max_length=20,blank=True,verbose_name='When does the academic session start? Give the month:')
+    sp_textbook_received=models.CharField(max_length=20,blank=True,choices=yn,verbose_name='Whether full set of textbooks received in current academic year?')
+    sp_textbook_received_year=models.CharField(max_length=50,blank=True,verbose_name='If yes, When were the text books received in current academic year?(Month)')
+    sp_graded_received=models.CharField(max_length=20,blank=True,choices=yn,verbose_name='Whether the School has received graded supplementary material in previous academic year?')
+    
+    #1.48
 
+    sp_school_visits=models.CharField(max_length=8,blank=True,verbose_name='(a)No. of academic inspections:')
+    sp_crc_visits=models.CharField(max_length=8,blank=True,verbose_name='(b)No. of visits by CRC Co-ordinator:')
+    sp_brc_visits=models.CharField(max_length=8,blank=True,verbose_name='(c)No. of visits by Block Level Officers(BRC/BEO):')
+    sp_officers_visits=models.CharField(max_length=8,blank=True,verbose_name='(d)No. of visits by District/State Level Officers:')
 
+    sp_smc_consulted=models.CharField(max_length=20,blank=True,choices=yn,verbose_name='Whether School Management Committee(SMC) has been constituted?')
+    sp_smc_members=models.CharField(max_length=8,blank=True,verbose_name='(a) Total number of members in SMC:')
+    sp_no_of_parents=models.CharField(max_length=8,blank=True,verbose_name='(b) Number of parents/guardians:')
+    sp_nominees_local=models.CharField(max_length=8,blank=True,verbose_name='(c)Number of Representatives/nominees from local authority/local/government/urban local body:')
+    sp_no_of_teachers=models.CharField(max_length=8,blank=True,verbose_name='(d)Number of teachers')
+    sp_no_of_members_training=models.CharField(max_length=8,blank=True,verbose_name='(e)Number of members provided training:')
+    sp_no_of_meetings_smc=models.CharField(max_length=8,blank=True,verbose_name='(f)Number of meetings held by SMC(previous year):')
+    sp_smc_prepared_plan=models.CharField(max_length=8,blank=True,choices=yn,verbose_name='(g)Whether SMC has prepared the School Development Plan?')
+    sp_separate_bank_smc=models.CharField(max_length=8,blank=True,choices=yn,verbose_name='(h)Whether separate bank account for SMC is being maintained?')
+    sp_bank_name_smc=models.CharField(max_length=20,blank=True,verbose_name='Bank Name:')
+    sp_bank_branch_smc=models.CharField(max_length=20,blank=True,verbose_name='Branch:')
+    sp_account_number_smc=models.CharField(max_length=20,blank=True,verbose_name='Account Number:')
+    sp_account_name_smc=models.CharField(max_length=20,blank=True,verbose_name='Account in the Name of:')
+    sp_ifsc_smc=models.CharField(max_length=20,blank=True,verbose_name='IFSC Code:')
+    sp_smc_smdc_same=models.CharField(max_length=8,blank=True,choices=yn,verbose_name='Whether School Management Committee(SMC) and School Management and Development Committee(SMDC)are same in the school?')
+    sp_smc_smdc_constituted=models.CharField(max_length=8,blank=True,choices=yn,verbose_name='(a)Whether School Management and Development Committee has been constituted?')
+    
+    #1.51(a)
+
+    sp_no_of_meetings_smc_last=models.CharField(max_length=8,blank=True,verbose_name='(a)Number of SMDC meetings held during the last academic year?')
+    sp_smdc_prepared_plan=models.CharField(max_length=8,blank=True,choices=yn,verbose_name='(b)Whether SMDC has prepared School Improvement Plan?')
+    sp_separate_bank_smdc=models.CharField(max_length=8,blank=True,choices=yn,verbose_name='(c)Whether separate bank account for SMDC is being maintained?')
+    sp_bank_name_smdc=models.CharField(max_length=20,blank=True,verbose_name='Bank Name:')
+    sp_bank_branch_smdc=models.CharField(max_length=20,blank=True,verbose_name='Branch:')
+    sp_account_number_smdc=models.CharField(max_length=20,blank=True,verbose_name='Account Number:')
+    sp_account_name_smdc=models.CharField(max_length=20,blank=True,verbose_name='Account in the Name of:')
+    sp_ifsc_smdc=models.CharField(max_length=20,blank=True,verbose_name='IFSC Code:')
+    sp_sbc_constituted=models.CharField(max_length=8,blank=True,choices=yn,verbose_name='(d) Whether School Building Committee(SBC) has been constituted?')
+    sp_ac_constituted=models.CharField(max_length=8,blank=True,choices=yn,verbose_name='(e) Whether the school has constitued its Academic Committee(AC)?')
+    sp_pta_constituted=models.CharField(max_length=8,blank=True,choices=yn,verbose_name='(f) Whether the school has constitued its Parent-Teacher Association(PTA)?')
+    sp_pta_meetings_last=models.CharField(max_length=8,blank=True,verbose_name='1. Number of PTA meetings held during the last academic year')
     def __str__(self):
         return self.sp_school_name
 
@@ -325,4 +384,4 @@ class PhysicalFacilities(TimeStampMixin):
     pf_ict_for_teaching_hours=models.CharField(max_length=10,blank=True,verbose_name='(a) If yes, Number of Hours spent per week')
 
     def __str__(self):
-        return self.sp_school_name
+        return self.pf_school_name

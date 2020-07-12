@@ -12,5 +12,5 @@ class PhysicalFacilitiesForm(forms.ModelForm):
 
     class Meta:
         model = PhysicalFacilities
-        exclude = ('pf_school', 'academic_year')
+        exclude = ('pf_school','academic_year')
         
